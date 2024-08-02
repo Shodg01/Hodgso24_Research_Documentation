@@ -1,0 +1,37 @@
+#!/bin/bash --login
+
+#SBATCH --time=2:00:00                                # this should be in hr:min:sec
+#SBATCH --nodes=8                                     # runs faster with more nodes, but some jobs require just 1 node
+#SBATCH --ntasks=8                                    # this should be same number as nodes
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=8G                              # can change the memory for each node
+#SBATCH --job-name slices_and_projections             # name of your job, no spaces
+#SBATCH --mail-user=email@msu.edu                     # email to send notifications to
+#SBATCH --mail-type=ALL 	                      # notify when jobs start, end, or fail
+
+# loading in the right modules
+module purge
+
+module load R/4.3.2-gfbf-2023a HDF5/1.14.0-gompi-2023a
+
+# these two lines are needed for yt scripts (change the hodgso24 to your msu net ID)
+export PATH=/mnt/home/hodgso24/anaconda3/bin:$PATH
+
+export LD_LIBRARY_PATH=/mnt/home/hodgso24/anaconda3/lib:$LD_LIBRARY_PATH
+
+# change to directory where you want ouputs (change path to be right for you)
+cd $SCRATCH/plots/
+
+# copy your python script (change path to be right for you)
+cp $HOME/Scripts/newCGM_noramp/slices_projs.py .
+
+# just some commands for the slurm output file to be a bit more readable
+pwd
+
+ls -l
+
+# running your script, -n should be the same as the number of nodes requested
+mpirun -n 8 python3 slices_projs.py
+
+#scontrol show job $SLURM_JOB_ID
+
