@@ -1,6 +1,6 @@
 # Hodgso24_Research_Documentation
 
-## This repo is for documenting the different data making and analysis notebooks and scripts I used while part of Brian O'Shea's research group at MSU.
+**This repo is for documenting the different data making and analysis notebooks and scripts I used while part of Brian O'Shea's research group at MSU.**
 
 The majority of files will be jupyter notebooks, which is where I did most of my work. For redunancy sake I'll include a few of my scripts that I would submit to the slurm workload manager. Most of my notebooks are designed to be able to be copied and pasted directly into a .py file, which would be run by a .sb file. If not, they're stated in the top of the notebook, or just notebooks for playing with plotting things. I will also include a txt file or two, in case you want to recreate some of my code.
 
@@ -33,3 +33,7 @@ The majority of files will be jupyter notebooks, which is where I did most of my
 - The order listed in the contents is the reccomended order of reading (if you're new to this)
 - Make sure to make your axes/limits the same for all sims you're looking at so they're easier to compare to each other
 - I've left the sim names/paths in my scripts, so make sure to change that before running any of them to fit your specific sim
+
+### Future Work:
+
+I included one WIP file to do with projection progression, however there's a few other things that would be useful for any future work. I think it could be interesting to try a similar thing with slices, moving through the box to get a wholistic view through the slices. I dabled very breifly with volume rendering, but going into more detail with it would be interesting. I think it would also be worth while to try and recreate some plots similar to the ones used in the Kopenhafer, O'shea, Voit 2023 paper, especially the ones related to the change in mass. That particularly would give a good idea on whether or not gas is accreting onto the disk. It could also be interesting to keep track of the median t<sub>cool</sub> / t<sub>ff</sub> ratio, like they did in the paper. That would help be able to tell if gas is accreting via precipitation. I also never got around to making movies of multipanel plots. It would theoretically be easy enough by making multipanel plots of all the snapshots and then using ffmpeg to turn it into a movie. This would be good for comparing the different simulations to each other. 
